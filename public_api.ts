@@ -1,0 +1,1 @@
+export * from './src/app/modules/reactive-people-picker/index'
