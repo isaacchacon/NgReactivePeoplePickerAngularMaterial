@@ -5,6 +5,10 @@
 /tmp
 /out-tsc
 
+#ngpackagr working folder
+/.ng_build
+
+
 # dependencies
 /node_modules
 
