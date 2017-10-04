@@ -9,15 +9,16 @@ This people picker trys to mimick the way Office 365 / SharePoint online people 
 If you run the example (app.component), you will learn how to consume this people picker.
 
 Features: 
--No postback / flickering.
+
+- No postback / flickering.
 - It is made utilizing the reactive forms from angular.
 - It will work with mouse and / or keyboard arrows to select the people from the drop down list, and hit enter (or click) to make a selection .
--Resolves the entity at page load to see if the entity is still valid or not
--Currently the back end searches by email, login account, or display name, so it is a very powerful search.
--It implements angular material (2+ ) components, which were still in beta a few days ago - use with caution.
--Implements the progress bar from material design , so that it let's people know when the picker is busy looking up someone.
--Implements the autocomplete from material design, very nice control!
--Implements tooltips with the mdtooltip from material design, though you may want to customize the css (it's not the best as of now).
+- Resolves the entity at page load to see if the entity is still valid or not
+- Currently the back end searches by email, login account, or display name, so it is a very powerful search.
+- It implements angular material (2+ ) components, which were still in beta a few days ago - use with caution.
+- Implements the progress bar from material design , so that it let's people know when the picker is busy looking up someone.
+- Implements the autocomplete from material design, very nice control!
+- Implements tooltips with the mdtooltip from material design, though you may want to customize the css (it's not the best as of now).
 - It will try to resolve the person on the blur event.
 
 TODO's / current drawbacks:.
