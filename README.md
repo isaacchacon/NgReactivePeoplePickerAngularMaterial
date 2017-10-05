@@ -25,6 +25,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Implements tooltips with the mdtooltip from material design, though you may want to customize the css (it's not the best as of now).
 - It will try to resolve the person on the blur event.
 - Implements an output event "onPeoplePicked"
+- current backend retrieves entries from user information list ( this is the backend project, located in [NgSharePointWebServices](https://github.com/isaacchacon/NgSharePointWebServices). ) 
 
 ### Screenshots:
 
@@ -123,6 +124,23 @@ createForm() {
 
 The FormGroup is created through the static method 'buildItem' from TaxPeeoplePickerComponent.
 
+Object UserInfoListEntry: this is the object that is bound and repreent a person either in the picker and in the autocomplete (drop down).
+
+it has the following properties: title, jobtitle, name and email and i believe they match to the column names in SharePoint's user information list. It also has an id porperty, which is the id column in Sharepoint.
+
+Example of an object instance that would come from a SharePoint 2010 backend:
+
+id:1212
+title:Adams, John
+jobTitle: Manager3
+name: Contoso\JAdams
+email:John.Adams@contoso.com
+
+```
+	getItemProperties():string[]{	
+		return ["title", "jobTitle",  "name", "email" ]
+}
+```
 
  ## Disclaimer:
  
