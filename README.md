@@ -1,12 +1,16 @@
 # ReactivePeoplePickerAngularMaterial
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.2.
+A People Picker in Angular 2+, Tries to emulate office 365 / SharePoint online's People picker, implements Angular's Reactive Forms and Angular Material, 
+
+[NPM repository](https://www.npmjs.com/package/reactive-people-picker-angular-material)
 
 This people picker is in abstracted layers, so that you could connect any backend and in theory this people picker should work with any back end. Current back end is a SharePoint 2010 web service (located in [NgSharePointWebServices](https://github.com/isaacchacon/NgSharePointWebServices).
 
 This people picker trys to mimick the way Office 365 / SharePoint online people picker works, to some extent.
 
 If you run the example (app.component), you will learn how to consume this people picker.
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.2.
 
 ### Features: 
 
