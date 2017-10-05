@@ -8,7 +8,7 @@ This people picker trys to mimick the way Office 365 / SharePoint online people 
 
 If you run the example (app.component), you will learn how to consume this people picker.
 
-Features: 
+### Features: 
 
 - No postback / flickering.
 - It is made utilizing the reactive forms from angular.
@@ -20,13 +20,67 @@ Features:
 - Implements the autocomplete from material design, very nice control!
 - Implements tooltips with the mdtooltip from material design, though you may want to customize the css (it's not the best as of now).
 - It will try to resolve the person on the blur event.
+- Implements an output event "onPeoplePicked"
 
-TODO's / current drawbacks:.
+### Screenshots:
 
-How to use it : 
+New People picker:
+
+![New People Picker](https://github.com/isaacchacon/NgReactivePeoplePickerAngularMaterial/raw/master/doc/1.png)
 
 
+Search Results:
 
+![Search Results](https://github.com/isaacchacon/NgReactivePeoplePickerAngularMaterial/raw/master/doc/SearchResults.png)
+
+
+Hovering with tooltip detail:
+
+![Hovering](https://github.com/isaacchacon/NgReactivePeoplePickerAngularMaterial/raw/master/doc/Hovering.png)
+
+Resolved picker:
+
+![Resolved Picker](https://github.com/isaacchacon/NgReactivePeoplePickerAngularMaterial/raw/master/doc/ResolvedPicker.png)
+
+No results found:
+
+![NoResultsFound](https://github.com/isaacchacon/NgReactivePeoplePickerAngularMaterial/raw/master/doc/NoResultsFound.png)
+
+
+### TODO's / current drawbacks:.
+
+- It utilizes bootstrap, `<link rel="stylesheet" href="assets/bootstrap3.3.7.min.css">`
+- It does not support multiple people selection.
+- The demo has an error (something like CheckedFailed , don't remember), but it seems to still work pretty well. I integrated the picker in other forms and that error is not showing at all.
+- I'm sure there's more room to fix / enhance..
+- The component code needs a total / cleaner rewrite, but it works as of now.
+- Poor exception / error handling.
+
+### How to use it : 
+
+if you run the demo from index.html, (I used angular-cli), you should be able to see at least the initial picker.
+It won't show any results , you have to connect it to your back end.
+
+Trying to make memory, these are the steps that i followed to make this demo run:
+
+1. Upgraded from angular 2 to angular 4.:
+  `npm install @angular/common@latest @angular/compiler@latest @angular/compiler-cli@latest @angular/core@latest @angular/forms@latest @angular/http@latest @angular/platform-browser@latest @angular/platform-browser-dynamic@latest @angular/platform-server@latest @angular/router@latest @angular/animations@latest typescript@latest --save`
+2. Installed angular material 2+
+  `npm install --save @angular/material @angular/cdk`
+3. Installed angular animations:
+  `npm install --save @angular/animations`
+4. Added bootstrap, and the indigo-pinc.css from the animations:
+  (the indigo pink can be grabbed from \node_modules\@angular\material\prebuilt-themes), i guess you could grab the other css and it should work. Or you should be able to customize your css. I am a material newbie, please excuse.
+  `<link rel="stylesheet" href="/siteassets/bootstrap3.3.7.min.css">`
+  `<link href="/siteassets/indigo-pink.css" rel="stylesheet">`
+5. If you will utilize the back end of SharePoint web services, get them from the other [git hub](https://github.com/isaacchacon/NgSharePointWebServices) or [npm](https://www.npmjs.com/package/ng-tax-share-point-web-services-module) project
+    if that is the case, i am utilizing JQuery ONLY to treat the xml from the web services results. 
+    I am sure that you can do better than me, but i had to quickly treat xml, so go ahead and add this to your index.html or to your webpart code: `<script src="/siteassets/jquery-3.1.1.min.js"></script>`
+
+
+### Analizing the Demo:
+
+The app.mosule has this code:
 
 
 ## Development server
