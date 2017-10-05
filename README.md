@@ -59,7 +59,7 @@ No results found:
 ### How to use it : 
 
 if you run the demo from index.html, (I used angular-cli), you should be able to see at least the initial picker.
-It won't show any results , you have to connect it to your back end.
+It won't show any results , you have to connect it to your back end
 
 Trying to make memory, these are the steps that i followed to make this demo run:
 
@@ -76,12 +76,51 @@ Trying to make memory, these are the steps that i followed to make this demo run
 5. If you will utilize the back end of SharePoint web services, get them from the other [git hub](https://github.com/isaacchacon/NgSharePointWebServices) or [npm](https://www.npmjs.com/package/ng-tax-share-point-web-services-module) project
     if that is the case, i am utilizing JQuery ONLY to treat the xml from the web services results. 
     I am sure that you can do better than me, but i had to quickly treat xml, so go ahead and add this to your index.html or to your webpart code: `<script src="/siteassets/jquery-3.1.1.min.js"></script>`
+6. then i did an ng serve.
+### Dissecting the Demo:
+
+The app.mosule has this relevant code:
+```
+import {NgTaxServices} from 'ng-tax-share-point-web-services-module';
+import {ReactivePeoplePickerModule} from './modules/reactive-people-picker/reactive-people-picker.module';
+```
+then , in the  imports we do an NgTaxServices.forRoot():
+
+```
+imports: [
+    BrowserModule,ReactiveFormsModule,NgTaxServices.forRoot(), HttpModule,ReactivePeoplePickerModule
+  ],
+```
+
+on app.component.html:
+
+```
+<people-picker 
+(onPeoplePicked)="peoplePickedEventHandler($event);" 
+controlId="samplePickerId" 
+requiredMessage="Please enter a selection" 
+[group]="sampleFormGroup.get('ParentPickerGroup')">
+</people-picker>
+```
+we are consuming the output event 'onPeoplePicked', which is an output event . this is optional.
+the controlId can really be anything i believe.
+requiredMessage is an optional input parameter that if you don't specified, it should make the picker think that it's not required.
+the important property to note is the group, which is initialized in the app.component.ts:
+
+```
+createForm() {
+		this.sampleFormGroup = this.fb.group({
+			ParentPickerGroup:TaxPeoplePickerComponent.buildItem()
+			});
+	}
+```
+
+The FormGroup is created through the static method 'buildItem' from TaxPeeoplePickerComponent.
 
 
-### Analizing the Demo:
-
-The app.mosule has this code:
-
+ ## Disclaimer:
+ 
+ Use under your own risk, it has not been tested thoroughly.
 
 ## Development server
 
@@ -105,5 +144,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 Before running the tests make sure you are serving the app via `ng serve`.
 
 ## Further help
+
+Use this under your own risk no warranties
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
