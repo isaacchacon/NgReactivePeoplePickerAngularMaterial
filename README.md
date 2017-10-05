@@ -80,17 +80,19 @@ Trying to make memory, these are the steps that i followed to make this demo run
 ### Dissecting the Demo:
 
 The app.mosule has this relevant code:
+NgTaxServices is added because my backend is SharePoint web services (asmx), but you may recode the tax-people-picker-business.ts in order to connect your own service / backend.
 ```
 import {NgTaxServices} from 'ng-tax-share-point-web-services-module';
 import {ReactivePeoplePickerModule} from './modules/reactive-people-picker/reactive-people-picker.module';
 ```
 then , in the  imports we do an NgTaxServices.forRoot():
-
+NgTaxServices is added because my backend is SharePoint web services (asmx), but you may recode the tax-people-picker-business.ts in order to connect your own service / backend.
 ```
 imports: [
     BrowserModule,ReactiveFormsModule,NgTaxServices.forRoot(), HttpModule,ReactivePeoplePickerModule
   ],
 ```
+Now onto the people picker code itself:
 
 on app.component.html:
 
