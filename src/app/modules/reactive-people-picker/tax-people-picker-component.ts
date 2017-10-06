@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
  import { ViewChild } from '@angular/core';
- import { MdAutocompleteTrigger } from '@angular/material';
+ import { MatAutocompleteTrigger } from '@angular/material';
 
 import {SharepointListsWebService,UserInfoListEntry } from 'ng-tax-share-point-web-services-module';
 
@@ -33,27 +33,27 @@ import 'rxjs/add/operator/switchMap';
     selector: 'people-picker',
  	template: `
 	<div class="taxPeoplePickerContainer" [formGroup]="group">
-		<div *ngIf="selectedEmp" style="padding-left:12px;" [mdTooltip] = "selectedEmp.email+' - '+selectedEmp.name">
+		<div *ngIf="selectedEmp" style="padding-left:12px;" [matTooltip] = "selectedEmp.email+' - '+selectedEmp.name">
 			{{selectedEmp.name}}
 		</div>
-		<input type="text" [class.taxResolvedPicker]="isResolved" [class.taxUnresolvedPicker]="entryNotValid" [mdAutocomplete]="auto" #term 
-			[mdTooltip]="pickerTooltip"  mdTooltipShowDelay="1500" (keydown)="detectKeyDown($event);"  
+		<input type="text" [class.taxResolvedPicker]="isResolved" [class.taxUnresolvedPicker]="entryNotValid" [matAutocomplete]="auto" #term 
+			[matTooltip]="pickerTooltip"  matTooltipShowDelay="1500" (keydown)="detectKeyDown($event);"  
 			(keyup.enter)="userHitEnter= true;search(term.value ,$event);" (blur) = "blurEvent(term.value);" (keyup)="search(term.value, $event);" 
 			class="taxPeoplePickerText form-control" [attr.id]="controlId" formControlName="displayName" 
 			placeholder="Start typing employee name" >
-		<md-progress-bar mode="indeterminate"  *ngIf="numberOfActiveRequests>0" ></md-progress-bar>
+		<mat-progress-bar mode="indeterminate"  *ngIf="numberOfActiveRequests>0" ></mat-progress-bar>
 		<div *ngIf="currentItems.length==0&& (!isResolved)&& empTitle?.length>1&& numberOfActiveRequests ==0&&(!hideNoResultsFound)" class="alert alert-danger">
 			No results found for '{{empTitle}}'
 		</div>
-		<md-autocomplete #auto="mdAutocomplete">
+		<mat-autocomplete #auto="matAutocomplete">
 			<div *ngIf="!isResolved">
-			<md-option  *ngFor="let item of items | async" [value]="item.title"
-			(onSelectionChange)="setEmployee(item, $event)" [mdTooltip]="item.email+' - '+item.name">
+			<mat-option  *ngFor="let item of items | async" [value]="item.title"
+			(onSelectionChange)="setEmployee(item, $event)" [matTooltip]="item.email+' - '+item.name">
 				<div class="taxMainResultPicker">{{item.title}}</div>
 				<div class="taxSecResultPicker">{{item.jobTitle}}</div>
-			</md-option>
+			</mat-option>
 			</div>
-		</md-autocomplete>
+		</mat-autocomplete>
 	</div>
 	`,
     styles:[`
@@ -124,8 +124,8 @@ export class TaxPeoplePickerComponent implements OnInit {
  requiredMessage:string;
 
 	//access to the input that triggers the autocomplete.
-	@ViewChild('term', { read: MdAutocompleteTrigger }) 
-	autoCompleteInput: MdAutocompleteTrigger;
+	@ViewChild('term', { read: MatAutocompleteTrigger }) 
+	autoCompleteInput: MatAutocompleteTrigger;
 	
 	taxPeoplePickerBusiness:TaxPeoplePickerBusiness;
 	items: Observable<UserInfoListEntry[]>;

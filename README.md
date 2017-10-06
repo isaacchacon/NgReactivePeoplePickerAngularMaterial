@@ -56,7 +56,7 @@ No results found:
 
 - It utilizes bootstrap, `<link rel="stylesheet" href="assets/bootstrap3.3.7.min.css">`
 - It does not support multiple people selection.
-- The demo has an error (something like CheckedFailed , don't remember), but it seems to still work pretty well. I integrated the picker in other forms and that error is not showing at all.
+- The demo has an error (on runtime, firefox's console shows an:   ExpressionChangedAfterItHasBeenCheckedError), but it seems to still work pretty well. I integrated the picker in other forms and that error is not showing at all.
 - I'm sure there's more room to fix / enhance..
 - The component code needs a total / cleaner rewrite, but it works as of now.
 - Poor exception / error handling.

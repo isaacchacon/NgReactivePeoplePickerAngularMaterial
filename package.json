@@ -1,9 +1,10 @@
 {
   "name": "reactive-people-picker-angular-material",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
-  "repository":{ "type" : "git"
-  , "url" : "https://github.com/isaacchacon/NgReactivePeoplePickerAngularMaterial"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/isaacchacon/NgReactivePeoplePickerAngularMaterial"
   },
   "scripts": {
     "ng": "ng",
@@ -12,18 +13,18 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-	"packagr": "ng-packagr -p ng-package.json"
+    "packagr": "ng-packagr -p ng-package.json"
   },
   "private": false,
   "dependencies": {
     "@angular/animations": "^4.2.4",
-    "@angular/cdk": "^2.0.0-beta.11",
+    "@angular/cdk": "^2.0.0-beta.12",
     "@angular/common": "^4.2.4",
     "@angular/compiler": "^4.2.4",
     "@angular/core": "^4.2.4",
     "@angular/forms": "^4.2.4",
     "@angular/http": "^4.2.4",
-    "@angular/material": "^2.0.0-beta.11",
+    "@angular/material": "^2.0.0-beta.12",
     "@angular/platform-browser": "^4.2.4",
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
