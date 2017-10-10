@@ -26,6 +26,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - It will try to resolve the person on the blur event.
 - Implements an output event "onPeoplePicked"
 - current backend retrieves entries from user information list ( this is the backend project, located in [NgSharePointWebServices](https://github.com/isaacchacon/NgSharePointWebServices). ) 
+- Utilizes angular material and angular 4+
 
 ### Screenshots:
 
