@@ -68,20 +68,15 @@ It won't show any results , you have to connect it to your back end
 
 Trying to make memory, these are the steps that i followed to make this demo run:
 
-1. Upgraded from angular 2 to angular 4.:
-  `npm install @angular/common@latest @angular/compiler@latest @angular/compiler-cli@latest @angular/core@latest @angular/forms@latest @angular/http@latest @angular/platform-browser@latest @angular/platform-browser-dynamic@latest @angular/platform-server@latest @angular/router@latest @angular/animations@latest typescript@latest --save`
-2. Installed angular material 2+
-  `npm install --save @angular/material @angular/cdk`
-3. Installed angular animations:
-  `npm install --save @angular/animations`
-4. Added bootstrap, and the indigo-pinc.css from the animations:
+1. Npm install
+2. Added bootstrap, and the indigo-pinc.css from the animations:
   (the indigo pink can be grabbed from \node_modules\@angular\material\prebuilt-themes), i guess you could grab the other css and it should work. Or you should be able to customize your css. I am a material newbie, please excuse.
   `<link rel="stylesheet" href="/siteassets/bootstrap3.3.7.min.css">`
   `<link href="/siteassets/indigo-pink.css" rel="stylesheet">`
-5. If you will utilize the back end of SharePoint web services, get them from the other [git hub](https://github.com/isaacchacon/NgSharePointWebServices) or [npm](https://www.npmjs.com/package/ng-tax-share-point-web-services-module) project
+3. If you will utilize the back end of SharePoint web services, get them from the other [git hub](https://github.com/isaacchacon/NgSharePointWebServices) or [npm](https://www.npmjs.com/package/ng-tax-share-point-web-services-module) project
     if that is the case, i am utilizing JQuery ONLY to treat the xml from the web services results. 
     I am sure that you can do better than me, but i had to quickly treat xml, so go ahead and add this to your index.html or to your webpart code: `<script src="/siteassets/jquery-3.1.1.min.js"></script>`
-6. then i did an ng serve.
+4. then i did an ng serve.
 ### Dissecting the Demo:
 
 The app.mosule has this relevant code:
