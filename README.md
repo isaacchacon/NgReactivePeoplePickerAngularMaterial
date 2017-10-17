@@ -62,14 +62,14 @@ No results found:
 - The component code needs a total / cleaner rewrite, but it works as of now.
 - Poor exception / error handling.
 
-### How to use it : 
+### Dependencies : 
 
 if you run the demo from index.html, (I used angular-cli), you should be able to see at least the initial picker.
 It won't show any results , you have to connect it to your back end
 
 Trying to make memory, these are the steps that i followed to make this demo run:
 
-1. Npm install
+1. Npm install reactive-people-picker-angular-material
 2. Added bootstrap, and the indigo-pink.css from the animations:
   (the indigo pink can be grabbed from \node_modules\@angular\material\prebuilt-themes), i guess you could grab the other css and it should work. Or you should be able to customize your css. I am a material newbie, please excuse.
   `<link rel="stylesheet" href="/siteassets/bootstrap3.3.7.min.css">`
