@@ -6,9 +6,9 @@ A People Picker in Angular 2+, Tries to emulate office 365 / SharePoint online's
 
 This people picker is in abstracted layers, so that you could connect any backend and in theory this people picker should work with any back end. Current back end is a SharePoint 2010 web service (located in [NgSharePointWebServices](https://github.com/isaacchacon/NgSharePointWebServices).
 
-This people picker trys to mimick the way Office 365 / SharePoint online people picker works, to some extent.
+This people picker tries to mimick the way Office 365 / SharePoint online people picker works, to some extent.
 
-If you run the example (app.component), you will learn how to consume this people picker.
+If you ran the attached example, you will learn how to consume this people picker.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.2.
 
@@ -70,7 +70,7 @@ It won't show any results , you have to connect it to your back end
 Trying to make memory, these are the steps that i followed to make this demo run:
 
 1. Npm install
-2. Added bootstrap, and the indigo-pinc.css from the animations:
+2. Added bootstrap, and the indigo-pink.css from the animations:
   (the indigo pink can be grabbed from \node_modules\@angular\material\prebuilt-themes), i guess you could grab the other css and it should work. Or you should be able to customize your css. I am a material newbie, please excuse.
   `<link rel="stylesheet" href="/siteassets/bootstrap3.3.7.min.css">`
   `<link href="/siteassets/indigo-pink.css" rel="stylesheet">`
