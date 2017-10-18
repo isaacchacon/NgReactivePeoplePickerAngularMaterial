@@ -1,6 +1,6 @@
 {
   "name": "reactive-people-picker-angular-material",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -31,10 +31,10 @@
     "@angular/platform-server": "^4.4.5",
     "@angular/router": "^4.4.5",
     "core-js": "2.5.1",
+    "ng-tax-share-point-web-services-module": "^0.1.0",
     "rxjs": "5.4.3",
     "typescript": "^2.5.3",
-    "zone.js": "~0.8.17",
-	"ng-tax-share-point-web-services-module": "^0.0.1"
+    "zone.js": "~0.8.17"
   },
   "devDependencies": {
     "@angular/cli": "^1.4.7",
