@@ -4,7 +4,7 @@ A People Picker in Angular 2+, Tries to emulate office 365 / SharePoint online's
 
 [NPM repository](https://www.npmjs.com/package/reactive-people-picker-angular-material)
 
-This people picker is in abstracted layers, so that you could connect any backend and in theory this people picker should work with any back end. Current back end is a SharePoint 2010 web service (located in [NgSharePointWebServices](https://github.com/isaacchacon/NgSharePointWebServices).
+This people picker is in abstracted layers, so that you could connect any backend and in theory this people picker should work with any back end. Current back end is a SharePoint 2010 web service (located in [NgSharePointWebServices](https://github.com/isaacchacon/NgSharePointWebServices). I think this should work right away with 2013 and, i believe 2016 as well but not 100% sure.  It could work right away on office 365 / online, but i am unsure. 
 
 This people picker tries to mimick the way Office 365 / SharePoint online people picker works, to some extent.
 
