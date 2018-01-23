@@ -4,29 +4,29 @@ A People Picker in Angular 2+, Tries to emulate office 365 / SharePoint online's
 
 [NPM repository](https://www.npmjs.com/package/reactive-people-picker-angular-material)
 
-This people picker is in abstracted layers, so that you could connect any backend and in theory this people picker should work with any back end. Current back end is a SharePoint 2010 web service (located in [NgSharePointWebServices](https://github.com/isaacchacon/NgSharePointWebServices). I think this should work right away with 2013 and, i believe 2016 as well but not 100% sure.  It could work right away on office 365 / online, but i am unsure. 
+This people picker is in abstracted layers, so that you could connect any backend with few code changes to he business class, and in theory this people picker should work with any back end. Current back end is a SharePoint 2010 web service (located in [NgSharePointWebServices](https://github.com/isaacchacon/NgSharePointWebServices). I think this should work right away with 2013 and, i believe 2016 as well but not 100% sure.  It works on SharePoint Online, i already tested it. 
 
 This people picker tries to mimick the way Office 365 / SharePoint online people picker works, to some extent.
 
-If you ran the attached example, you will learn how to consume this people picker.
+Please see the app if you want to completely examine / learn how to consume this people picker.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.2.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.2)
 
 ### Features: 
 
 - No postback / flickering.
 - It is made utilizing the reactive forms from angular.
 - It will work with mouse and / or keyboard arrows to select the people from the drop down list, and hit enter (or click) to make a selection .
-- Resolves the entity at page load to see if the entity is still valid or not
+- Resolves the entity at page load to see if the entity is still valid or not 
 - Currently the back end searches by email, login account, or display name, so it is a very powerful search.
-- It implements angular material (2+ ) components, which were still in beta a few days ago - use with caution.
-- Implements the progress bar from material design , so that it let's people know when the picker is busy looking up someone.
-- Implements the autocomplete from material design, very nice control!
-- Implements tooltips with the mdtooltip from material design, though you may want to customize the css (it's not the best as of now).
+- It implements angular material (2+ ) components.
+- Implements the progress bar from material design , so that it let's people know when the picker is busy making a service call.
+- Implements the autocomplete from material, very nice control!
+- Implements tooltips with the mdtooltip from material design.
 - It will try to resolve the person on the blur event.
 - Implements an output event "onPeoplePicked"
-- current backend retrieves entries from user information list ( this is the backend project, located in [NgSharePointWebServices](https://github.com/isaacchacon/NgSharePointWebServices). ) 
-- Utilizes angular material and angular 4+
+- current backend retrieves entries from user information list (/_catalogs/userinfo) ( this is the backend project, located in [NgSharePointWebServices](https://github.com/isaacchacon/NgSharePointWebServices). ) 
+
 
 ### Screenshots:
 
@@ -55,12 +55,11 @@ No results found:
 
 ### TODO's / current drawbacks:.
 
-- It utilizes bootstrap, `<link rel="stylesheet" href="assets/bootstrap3.3.7.min.css">`
-- It does not support multiple people selection.
-- The demo has an error (something like CheckedFailed , don't remember), but it seems to still work pretty well. I integrated the picker in other forms and that error is not showing at all.
-- I'm sure there's more room to fix / enhance..
-- The component code needs a total / cleaner rewrite, but it works as of now.
+
+- It does not support multiple people selection. - I have been tested angular material's chips, but they are not fully developed yet. As soon as they finish it, i may look into adding support for multiple people.
+- The demo app has a warning (something like CheckedFailed , don't remember), but it seems to still work OK in other production projects. I integrated the picker in other forms and that error is not showing at all.
 - Poor exception / error handling.
+- Testing specs are not there yet.
 
 ### Dependencies : 
 
@@ -70,27 +69,33 @@ It won't show any results , you have to connect it to your back end
 Trying to make memory, these are the steps that i followed to make this demo run:
 
 1. Npm install reactive-people-picker-angular-material
-2. Added bootstrap, and the indigo-pink.css from the animations:
+2. Added indigo-pink.css from the animations:
   (the indigo pink can be grabbed from \node_modules\@angular\material\prebuilt-themes), i guess you could grab the other css and it should work. Or you should be able to customize your css. I am a material newbie, please excuse.
   `<link rel="stylesheet" href="/siteassets/bootstrap3.3.7.min.css">`
   `<link href="/siteassets/indigo-pink.css" rel="stylesheet">`
 3. If you will utilize the back end of SharePoint web services, get them from the other [git hub](https://github.com/isaacchacon/NgSharePointWebServices) or [npm](https://www.npmjs.com/package/ng-tax-share-point-web-services-module) project
     if that is the case, i am utilizing JQuery ONLY to treat the xml from the web services results. 
     I am sure that you can do better than me, but i had to quickly treat xml, so go ahead and add this to your index.html or to your webpart code: `<script src="/siteassets/jquery-3.1.1.min.js"></script>`
+3.5 - Make sure that you have angular material and angular/cdk.
 4. then i did an ng serve.
+
 ### Dissecting the Demo:
 
-The app.mosule has this relevant code:
+The app.module has this relevant code:
 NgTaxServices is added because my backend is SharePoint web services (asmx), but you may recode the tax-people-picker-business.ts in order to connect your own service / backend.
 ```
+/*import the new HTTP Client!!!!!*/
+import {HttpClientModule} from '@angular/common/http';
 import {NgTaxServices} from 'ng-tax-share-point-web-services-module';
-import {ReactivePeoplePickerModule} from './modules/reactive-people-picker/reactive-people-picker.module';
+import {ReactivePeoplePickerModule} from 'reactive-people-picker-angular-material';
+/*the below is necessary because it's the backend library. You can easily fork the picker and change the backend*/
+import {TaxReusableComponentsModule} from 'ng-tax-reusable-components';
 ```
 then , in the  imports we do an NgTaxServices.forRoot():
 NgTaxServices is added because my backend is SharePoint web services (asmx), but you may recode the tax-people-picker-business.ts in order to connect your own service / backend.
 ```
 imports: [
-    BrowserModule,ReactiveFormsModule,NgTaxServices.forRoot(), HttpModule,ReactivePeoplePickerModule
+    BrowserModule,ReactiveFormsModule,HttpClientModule, NgTaxServices.forRoot(), ReactivePeoplePickerModule
   ],
 ```
 Now onto the people picker code itself:
