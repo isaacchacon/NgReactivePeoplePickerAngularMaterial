@@ -57,8 +57,7 @@ No results found:
 
 
 - It does not support multiple people selection. - I have been tested angular material's chips, but they are not fully developed yet. As soon as they finish it, i may look into adding support for multiple people.
-- The demo app has a warning (something like CheckedFailed , don't remember), but it seems to still work OK in other production projects. I integrated the picker in other forms and that error is not showing at all.
-- Poor exception / error handling.
+- exception / error handling could be enhanced.
 - Testing specs are not there yet.
 
 ### Dependencies : 
@@ -106,7 +105,6 @@ on app.component.html:
 <people-picker 
 (onPeoplePicked)="peoplePickedEventHandler($event);" 
 controlId="samplePickerId" 
-requiredMessage="Please enter a selection" 
 [group]="sampleFormGroup.get('ParentPickerGroup')">
 </people-picker>
 ```
@@ -118,14 +116,15 @@ the important property to note is the group, which is initialized in the app.com
 ```
 createForm() {
 		this.sampleFormGroup = this.fb.group({
-			ParentPickerGroup:TaxPeoplePickerComponent.buildItem()
+			ParentPickerGroup:TaxPeoplePickerComponent.buildItem(true)
 			});
 	}
 ```
 
-The FormGroup is created through the static method 'buildItem' from TaxPeeoplePickerComponent.
+The FormGroup is created through the static method 'buildItem' from TaxPeoplePickerComponent.
+You need to specify true if you want to make it required, or false if a people selection is NOT required.
 
-Object UserInfoListEntry: this is the object that is bound and repreent a person either in the picker and in the autocomplete (drop down).
+Object UserInfoListEntry: this is the object that is bound and represents a person either in the picker and in the autocomplete (drop down).
 
 it has the following properties: title, jobtitle, name and email and i believe they match to the column names in SharePoint's user information list. It also has an id porperty, which is the id column in Sharepoint.
 

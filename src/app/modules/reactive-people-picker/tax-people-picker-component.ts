@@ -12,9 +12,6 @@ import {SharepointListsWebService,UserInfoListEntry } from 'ng-tax-share-point-w
 import {TaxPeoplePickerBusiness} from './tax-people-picker-business';
 
 
-
-
-
 // Observable class extensions
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/throw';
@@ -120,9 +117,6 @@ export class TaxPeoplePickerComponent implements OnInit {
  @Input()
  group:FormGroup;
  
- @Input()
- requiredMessage:string;
-
 	//access to the input that triggers the autocomplete.
 	@ViewChild('term', { read: MatAutocompleteTrigger }) 
 	autoCompleteInput: MatAutocompleteTrigger;
@@ -133,8 +127,6 @@ export class TaxPeoplePickerComponent implements OnInit {
 	private searchTermStream = new Subject<string>();
 	
 	/*Main property bound to textbox*/
-	//this is GONE
-	//empTitle: string = null;
 	get empTitle():string{
 		if(this.group){
 			return this.group.get('displayName').value;
@@ -156,21 +148,6 @@ export class TaxPeoplePickerComponent implements OnInit {
 	}
 	
 	entryNotValid:boolean= false;
-	/* get entryNotValid():boolean{
-		if(this.group){
-			return this.group.get('entryNotValid').value;
-		}
-		return false;
-	}
-	set entryNotValid(valueToSet:boolean){
-		this.group.get('entryNotValid').patchValue(valueToSet);
-		if(valueToSet){
-			this.group.get('entryNotValid').setErrors({"entryNotValid":true});
-		}else{
-						this.group.get('entryNotValid').setErrors(null);
-
-		}
-	} */
 	
 	selectedEmp: UserInfoListEntry = null;
 	numberOfActiveRequests:number=0;
@@ -204,14 +181,8 @@ export class TaxPeoplePickerComponent implements OnInit {
 	private toTitleCase(term: string) {
 		return term.replace(/\w\S*/g, (term) => { return term.charAt(0).toUpperCase() + term.substr(1).toLowerCase(); });
 	}
-	
-	
 
 	detectKeyDown(event:KeyboardEvent){
-	//if(this.isResolved&& this.selectedEmp && this.empTitle == this.selectedEmp.title){
-		//if(event && event.keyCode ==8&& this.selectedEmp && this.empTitle == this.selectedEmp.title){
-		//if(event && event.keyCode ==8&& this.isResolved){
-		
 		let safeKeys :number[]= [9,13,35,36,37,38,39,40] ;
 		if(event && (this.isResolved || this.entryNotValid)&& safeKeys.filter(x=> x==event.keyCode).length==0){
 			//so that i can put here an if isresolved then cleanup the picker.
@@ -220,18 +191,13 @@ export class TaxPeoplePickerComponent implements OnInit {
 			this.flag = true;	// question this line of code? ? ?? ??
 			// cleaning the search results.
 			this.search("", null);
-
 		}
 	}
 	///Sets employee via the autocomplete.
 	/// Either by hitting enter (keyboard) or by clicking on an option.
 	setEmployee(emp: UserInfoListEntry, event:any) {
-		//this.selectedEmp = emp;
-		//commenting the below line for reactive form.
-		//this.empTitle= '';
 		this.search("", null);
 		this.resolvePicker(emp);
-		//this.isResolved = true;
 	}
 	
 	blurEvent(term:string){
@@ -279,6 +245,7 @@ export class TaxPeoplePickerComponent implements OnInit {
 	}
 
 	constructor(private sharepointListsWebService: SharepointListsWebService) {
+		
 		this.taxPeoplePickerBusiness = new TaxPeoplePickerBusiness(sharepointListsWebService);
 		this.items = <Observable<UserInfoListEntry[]>>this.searchTermStream
 		  .debounceTime(300)
@@ -335,19 +302,9 @@ export class TaxPeoplePickerComponent implements OnInit {
 			return g.get('isResolved').value?null:{"entryNotValid":true};
 		}
 		return null;
-	}
-	// static customPickerValidator(): ValidatorFn {
-	  // return (control: AbstractControl): {[key: string]: any} => {
-		// return control.value ? {'entryNotValid': {value: control.value}} : null;
-	  // };
-	// }
+	}	
 	
-	//wait for the group property to be set for the control.
 	ngOnInit(){
-		if(this.requiredMessage){
-			this.group.get('displayName').setValidators(Validators.required); 
-		}
-		//this.group.get('entryNotValid').setValidators(this.customPickerValidator);
 		this.group.get('insideTextbox').valueChanges.subscribe(data => {
 				if(this.group.get('insideTextbox').value){
 				let sourceValue:string = this.group.get('insideTextbox').value;
@@ -362,10 +319,10 @@ export class TaxPeoplePickerComponent implements OnInit {
 			});
 	}
 	
-	static buildItem(){
+	static buildItem(required?:boolean){
 		return new FormGroup({
 			insideTextbox: new FormControl(''), 
-			displayName: new FormControl(''), 
+			displayName:required? new FormControl('',Validators.required):new FormControl(''), 
 			isResolved: new FormControl(false)
 		}, TaxPeoplePickerComponent.customPickerValidator);
 	}

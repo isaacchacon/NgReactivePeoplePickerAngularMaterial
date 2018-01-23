@@ -25,7 +25,7 @@ export class AppComponent {
 	
 	createForm() {
 		this.sampleFormGroup = this.fb.group({
-			ParentPickerGroup:TaxPeoplePickerComponent.buildItem()
+			ParentPickerGroup:TaxPeoplePickerComponent.buildItem(true)
 			});
 	}
 	
