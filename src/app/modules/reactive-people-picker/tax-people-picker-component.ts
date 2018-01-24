@@ -319,7 +319,7 @@ export class TaxPeoplePickerComponent implements OnInit {
 			});
 	}
 	
-	static buildItem(required?:boolean){
+	static buildItem(required:boolean){
 		return new FormGroup({
 			insideTextbox: new FormControl(''), 
 			displayName:required? new FormControl('',Validators.required):new FormControl(''), 
